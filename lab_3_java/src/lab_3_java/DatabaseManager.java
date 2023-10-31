@@ -3,6 +3,7 @@ package lab_3_java;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Scanner;
 
 
 public class DatabaseManager {
@@ -28,9 +29,6 @@ public class DatabaseManager {
     public static String[] readDataFromFile(String fileName) {
     	try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             int size = 40;
-//            while (reader.readLine() != null) {
-//                size++;
-//            }
             
             String[] data = new String[size];
             
@@ -57,22 +55,21 @@ public class DatabaseManager {
     public static void deleteData(String fileName, String id) {
     	String[] s = DatabaseManager.readDataFromFile(fileName);
     	ArrayList<String> arrayList = new ArrayList<>();
-    	int counter = 0;
+   
+    	
     	for (String item:  s) {
-    		if (id.contains(item)) {
-    			break;
+    		String[] split_arr = item.split("-");
+    		if (!split_arr[0].equals(id)) {
+    			arrayList.add(item);
     		}
-    		counter ++;
+    	}
     		
-    	Collections.addAll(arrayList,  s);
-    	arrayList.remove(counter);
     	String[] new_s = new String[arrayList.size()];
     	
     	new_s = arrayList.toArray(s);
     	DatabaseManager.writeDataToFile(fileName, new_s);
     	
     	
-    	}
     	
     }
     

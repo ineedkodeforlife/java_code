@@ -37,6 +37,15 @@ public class Menu_Manager {
 			System.out.println("You enter digit '3' you wanna test mode");
 			//Now in implementation
 			break;
+			
+		case "4":
+			System.out.println("You enter digit '4' you wanna read data_file");
+			String[] arr_str = DatabaseManager.readDataFromFile("C:\\Users\\lotarev_rv\\Downloads\\java_code-main\\java_code\\lab_3_java\\data_file");
+			for (String item: arr_str) {
+				System.out.println(item);
+			}
+			
+			
 	}
 	}
 	
